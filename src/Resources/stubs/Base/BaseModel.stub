@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Entities{{PackageName}}\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * App\Entities{{PackageName}}\Models\BaseModel
+ *
+ * @mixin \Eloquent|\Illuminate\Database\Eloquent\Builder|Model
+ */
+class BaseModel extends Model
+{
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
+     * @return string
+     */
+    public function getPrimaryKey()
+    {
+        return $this->primaryKey;
+    }
+
+    public function testing()
+    {
+        return ['status' => true, 'data' => ['item1', 'item2']];
+    }
+}

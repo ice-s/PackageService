@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Entities{{PackageName}}\Repositories\{{Name}};
+
+use App\Entities{{PackageName}}\Repositories\BaseRepository;
+use App\Entities{{PackageName}}\Models\{{Name}}\{{Name}}Model;
+
+class {{Name}}Repository extends BaseRepository
+{
+    /**
+     * @var {{Name}}Model $model
+     */
+    protected $model;
+
+    /**
+     * {{Name}}Repository constructor.
+     *
+     * @param {{Name}}Model ${{NameFirstLowerCase}}Model
+     */
+    public function __construct({{Name}}Model ${{NameFirstLowerCase}}Model)
+    {
+        parent::__construct(${{NameFirstLowerCase}}Model);
+    }
+}

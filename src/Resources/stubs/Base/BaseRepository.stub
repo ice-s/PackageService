@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Entities{{PackageName}}\Repositories;
+
+use App\Entities{{PackageName}}\Models\BaseModel;
+
+/**
+ * Class BaseRepository
+ *
+ * @package App\Entities{{PackageName}}\Repositories
+ */
+abstract class BaseRepository
+{
+    /**
+     * @var BaseModel $model
+     */
+    protected $model;
+
+    public function __construct(BaseModel $model)
+    {
+        $this->model = $model;
+    }
+
+    public function testing()
+    {
+        return $this->model->testing();
+    }
+}

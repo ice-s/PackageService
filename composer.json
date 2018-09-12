@@ -1,0 +1,21 @@
+{
+  "name": "ice-s/service-tool",
+  "description": "Make service with command",
+  "type": "php",
+  "license": "",
+  "authors": [
+    {
+      "name": "ice-s",
+      "email": "nguyentruongson93@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ices\\ServiceTool\\": "src/"
+    }
+  }
+}

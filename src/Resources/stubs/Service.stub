@@ -1,0 +1,23 @@
+<?php
+namespace App\Services{{PackageName}}\{{Name}};
+
+use App\Services{{PackageName}}\BaseService;
+use App\Entities{{PackageName}}\Repositories\{{Name}}\{{Name}}Repository;
+
+class {{Name}}Service extends BaseService
+{
+    /**
+     * @var {{Name}}Repository $repository
+     */
+    protected $repository;
+
+    /**
+     * {{Name}}Service constructor.
+     *
+     * @param {{Name}}Repository ${{NameFirstLowerCase}}Repository
+     */
+    public function __construct({{Name}}Repository ${{NameFirstLowerCase}}Repository)
+    {
+        parent::__construct(${{NameFirstLowerCase}}Repository);
+    }
+}

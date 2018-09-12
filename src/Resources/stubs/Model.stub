@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Entities{{PackageName}}\Models\{{Name}};
+
+use App\Entities{{PackageName}}\Models\BaseModel;
+
+class {{Name}}Model extends BaseModel
+{
+
+}
