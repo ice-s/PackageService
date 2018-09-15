@@ -2,6 +2,7 @@
   "name": "ice-s/service-tool",
   "description": "Make service with command",
   "type": "php",
+  "version" : '0.1',
   "authors": [
     {
       "name": "ice-s",

@@ -178,8 +178,9 @@ class ServiceMakeCommand extends Command
         }
     }
 
-    protected function getStub($path) {
-        return resource_path($path);
+    protected function getStub($path)
+    {
+        return __DIR__ . '/../Resources/' . $path;
     }
 
     protected function makeDir($folderPath)
