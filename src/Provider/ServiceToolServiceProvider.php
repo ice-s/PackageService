@@ -13,9 +13,6 @@ class ServiceToolServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        $this->publishes([
-//            __DIR__.'/../Config/command.php' => config_path('command.php'),
-//        ]);
         $this->mergeConfigFrom(
             __DIR__.'/../Config/command.php', 'command'
         );

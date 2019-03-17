@@ -26,7 +26,7 @@ class ServiceMakeCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Create a new Service, Example : php artisan service:make Customer Backend';
+    protected $description = 'Create a new Service, Example : php artisan service:make {Service} {Package}';
 
     /**
      * Execute the console command.
@@ -119,7 +119,7 @@ class ServiceMakeCommand extends Command
         $baseStub = $this->config['Stubs']['Base' . $type]; // template file
 
         $path = app_path($basePath);
-        $filePath = app_path($basePath . "{$baseFile}");
+        $filePath = app_path($basePath  . '\\' . "{$baseFile}");
 
         /*get template*/
         $stubFile = $this->getStub($baseStub);
@@ -151,11 +151,6 @@ class ServiceMakeCommand extends Command
             $basePath = $this->config['EntityPath'] . "{$packagePath}" . $this->config[$type . 'Path'];
             $stubFileName = "stubs/{$type}.stub"; // template file
             $class = "{$name}{$type}.php";
-
-            if ($type == "Repository"){
-                $stubRepoInterface = "stubs/{$type}Interface.stub";
-                $repoInterface = "{$name}{$type}Interface.php";
-            }
         } else {
             $basePath = $this->config['ServicePath'] . "{$packagePath}";
             $stubFileName = "stubs/Service.stub"; // template file
@@ -175,14 +170,13 @@ class ServiceMakeCommand extends Command
                 [$name, lcfirst($name), $packageNameSpace], $template);
             file_put_contents($fileName, $template);
 
-            if ($type == "Repository"){
+            if ($type == "Repository") {
                 $stubRepoInterface = "stubs/{$type}Interface.stub";
                 $repoInterface = "{$name}{$type}Interface.php";
                 $fileNameRepoInterface = app_path("{$basePath}/{$folder}/{$repoInterface}");
-                $templateRepo = file_get_contents($stubRepoInterface);
+                $templateRepo = file_get_contents($this->getStub($stubRepoInterface));
                 $templateRepo = str_replace(['{{Name}}', '{{NameFirstLowerCase}}', '{{PackageName}}'],
                     [$name, lcfirst($name), $packageNameSpace], $templateRepo);
-                var_dump($fileNameRepoInterface, $templateRepo);
                 file_put_contents($fileNameRepoInterface, $templateRepo);
             }
 

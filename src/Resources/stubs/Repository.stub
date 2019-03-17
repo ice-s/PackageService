@@ -5,7 +5,7 @@ namespace App\Entities{{PackageName}}\Repositories\{{Name}};
 use App\Entities{{PackageName}}\Repositories\BaseRepository;
 use App\Entities{{PackageName}}\Models\{{Name}}\{{Name}}Model;
 
-class {{Name}}Repository extends BaseRepository implement {{Name}}RepositoryInterface
+class {{Name}}Repository extends BaseRepository implements {{Name}}RepositoryInterface
 {
     /**
      * @var {{Name}}Model $model
