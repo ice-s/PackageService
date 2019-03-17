@@ -1,0 +1,8 @@
+<?php
+
+namespace App\Entities{{PackageName}}\Repositories\{{Name}};
+
+interface {{Name}}RepositoryInterface
+{
+
+}

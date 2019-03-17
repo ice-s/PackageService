@@ -2,7 +2,8 @@
 namespace App\Services{{PackageName}};
 
 use App\Entities{{PackageName}}\Repositories\BaseRepository;
-class BaseService
+
+abstract class BaseService
 {
     /**
      * @var BaseRepository $repository
@@ -17,13 +18,4 @@ class BaseService
         $this->repository = $baseRepository;
     }
 
-    public function findById($id)
-    {
-        return $this->repository->findById($id);
-    }
-
-    public function testing()
-    {
-        return $this->repository->testing();
-    }
 }

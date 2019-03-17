@@ -151,6 +151,11 @@ class ServiceMakeCommand extends Command
             $basePath = $this->config['EntityPath'] . "{$packagePath}" . $this->config[$type . 'Path'];
             $stubFileName = "stubs/{$type}.stub"; // template file
             $class = "{$name}{$type}.php";
+
+            if ($type == "Repository"){
+                $stubRepoInterface = "stubs/{$type}Interface.stub";
+                $repoInterface = "{$name}{$type}Interface.php";
+            }
         } else {
             $basePath = $this->config['ServicePath'] . "{$packagePath}";
             $stubFileName = "stubs/Service.stub"; // template file
@@ -169,6 +174,17 @@ class ServiceMakeCommand extends Command
             $template = str_replace(['{{Name}}', '{{NameFirstLowerCase}}', '{{PackageName}}'],
                 [$name, lcfirst($name), $packageNameSpace], $template);
             file_put_contents($fileName, $template);
+
+            if ($type == "Repository"){
+                $stubRepoInterface = "stubs/{$type}Interface.stub";
+                $repoInterface = "{$name}{$type}Interface.php";
+                $fileNameRepoInterface = app_path("{$basePath}/{$folder}/{$repoInterface}");
+                $templateRepo = file_get_contents($stubRepoInterface);
+                $templateRepo = str_replace(['{{Name}}', '{{NameFirstLowerCase}}', '{{PackageName}}'],
+                    [$name, lcfirst($name), $packageNameSpace], $templateRepo);
+                var_dump($fileNameRepoInterface, $templateRepo);
+                file_put_contents($fileNameRepoInterface, $templateRepo);
+            }
 
             return true;
         } else {

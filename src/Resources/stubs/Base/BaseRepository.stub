@@ -21,8 +21,4 @@ abstract class BaseRepository
         $this->model = $model;
     }
 
-    public function testing()
-    {
-        return $this->model->testing();
-    }
 }

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent|\Illuminate\Database\Eloquent\Builder|Model
  */
-class BaseModel extends Model
+abstract class BaseModel extends Model
 {
     /**
      * Indicates if the model should be timestamped.
@@ -26,8 +26,4 @@ class BaseModel extends Model
         return $this->primaryKey;
     }
 
-    public function testing()
-    {
-        return ['status' => true, 'data' => ['item1', 'item2']];
-    }
 }
