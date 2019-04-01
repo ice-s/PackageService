@@ -2,7 +2,7 @@
   "name": "ice-s/service-tool",
   "description": "Make service with command",
   "type": "php",
-  "version" : "1.0.3",
+  "version" : "1.0.4",
   "authors": [
     {
       "name": "ice-s",
@@ -16,6 +16,13 @@
   "autoload": {
     "psr-4": {
       "Ices\\ServiceTool\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Ices\\ServiceTool\\Provider\\ServiceToolServiceProvider"
+      ]
     }
   }
 }
