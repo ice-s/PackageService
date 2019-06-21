@@ -5,11 +5,21 @@ namespace DummyNamespace;
 use DummyRootNamespaceHttp\Requests;
 use DummyRootNamespaceHttp\Controllers\Controller;
 
-use DummyRootNamespace{{modelNamespace}}{{modelName}};
+use DummyRootNamespace{{ServiceNamespace}}{{ServiceName}};
+use DummyRootNamespace{{RequestNameSpace}}{{RequestName}};
 use Illuminate\Http\Request;
 
 class DummyClass extends Controller
 {
+     /**
+     * @var {{ServiceName}} $service
+     */
+    private $service;
+
+    public function __construct({{ServiceName}} $service){
+        $this->service = $service
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +56,7 @@ class DummyClass extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store({{RequestName}} $request)
     {
         {{validationRules}}
         $requestData = $request->all();

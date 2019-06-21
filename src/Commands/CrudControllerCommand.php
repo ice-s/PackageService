@@ -45,9 +45,7 @@ class CrudControllerCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return config('crudgenerator.custom_template')
-        ? config('crudgenerator.path') . '/controller.stub'
-        : __DIR__ . '/../stubs/controller.stub';
+        return __DIR__ . '/../Resources/stubs/app/controller.stub';
     }
 
     /**
@@ -97,70 +95,10 @@ class CrudControllerCommand extends GeneratorCommand
         $routePrefixCap = ucfirst($routePrefix);
         $perPage = intval($this->option('pagination'));
         $viewName = snake_case($this->option('crud-name'), '-');
-        $fields = $this->option('fields');
-        $validations = rtrim($this->option('validations'), ';');
-
-        $validationRules = '';
-        if (trim($validations) != '') {
-            $validationRules = "\$this->validate(\$request, [";
-
-            $rules = explode(';', $validations);
-            foreach ($rules as $v) {
-                if (trim($v) == '') {
-                    continue;
-                }
-
-                // extract field name and args
-                $parts = explode('#', $v);
-                $fieldName = trim($parts[0]);
-                $rules = trim($parts[1]);
-                $validationRules .= "\n\t\t\t'$fieldName' => '$rules',";
-            }
-
-            $validationRules = substr($validationRules, 0, -1); // lose the last comma
-            $validationRules .= "\n\t\t]);";
-        }
-
-        if (\App::VERSION() < '5.3') {
-            $snippet = <<<EOD
-        if (\$request->hasFile('{{fieldName}}')) {
-            \$file = \$request->file('{{fieldName}}');
-            \$fileName = str_random(40) . '.' . \$file->getClientOriginalExtension();
-            \$destinationPath = storage_path('/app/public/uploads');
-            \$file->move(\$destinationPath, \$fileName);
-            \$requestData['{{fieldName}}'] = 'uploads/' . \$fileName;
-        }
-EOD;
-        } else {
-            $snippet = <<<EOD
-        if (\$request->hasFile('{{fieldName}}')) {
-            \$requestData['{{fieldName}}'] = \$request->file('{{fieldName}}')
-                ->store('uploads', 'public');
-        }
-EOD;
-        }
-
-
-        $fieldsArray = explode(';', $fields);
         $fileSnippet = '';
         $whereSnippet = '';
 
-        if ($fields) {
-            $x = 0;
-            foreach ($fieldsArray as $index => $item) {
-                $itemArray = explode('#', $item);
-
-                if (trim($itemArray[1]) == 'file') {
-                    $fileSnippet .= str_replace('{{fieldName}}', trim($itemArray[0]), $snippet) . "\n";
-                }
-
-                $fieldName = trim($itemArray[0]);
-
-                $whereSnippet .= ($index == 0) ? "where('$fieldName', 'LIKE', \"%\$keyword%\")" . "\n                " : "->orWhere('$fieldName', 'LIKE', \"%\$keyword%\")" . "\n                ";
-            }
-
-            $whereSnippet .= "->";
-        }
+        $stub = str_replace('{{modelName}}', $modelName, $stub);
 
         return $this->replaceNamespace($stub, $name)
             ->replaceViewPath($stub, $viewPath)
@@ -173,7 +111,6 @@ EOD;
             ->replaceRouteGroup($stub, $routeGroup)
             ->replaceRoutePrefix($stub, $routePrefix)
             ->replaceRoutePrefixCap($stub, $routePrefixCap)
-            ->replaceValidationRules($stub, $validationRules)
             ->replacePaginationNumber($stub, $perPage)
             ->replaceFileSnippet($stub, $fileSnippet)
             ->replaceWhereSnippet($stub, $whereSnippet)
