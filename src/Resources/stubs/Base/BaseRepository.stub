@@ -9,7 +9,7 @@ use Prettus\Repository\Eloquent\BaseRepository as BRepository;
  *
  * @package App\Entities{{PackageName}}\Repositories
  */
-abstract class BaseRepository
+abstract class BaseRepository extends BRepository
 {
 
 }

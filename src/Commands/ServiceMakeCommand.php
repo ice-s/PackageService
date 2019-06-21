@@ -124,7 +124,7 @@ class ServiceMakeCommand extends Command
         /*get template*/
         $stubFile = $this->getStub($baseStub);
 
-        if (!file_exists($filePath)) {
+        if (!file_exists($path . "/{$baseFile}")) {
             $this->makeDir($path);
 
             $template = file_get_contents($stubFile);
