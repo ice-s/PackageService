@@ -1,10 +1,12 @@
 <?php
 
 namespace Ices\ServiceTool\Provider;
+namespace Ices\ServiceTool\Provider;
 
 use Illuminate\Support\ServiceProvider;
 use Ices\ServiceTool\Commands\ServiceDestroyCommand;
 use Ices\ServiceTool\Commands\ServiceMakeCommand;
+use Ices\ServiceTool\Commands\CrudControllerCommand;
 
 class ServiceToolServiceProvider extends ServiceProvider
 {
@@ -28,7 +30,8 @@ class ServiceToolServiceProvider extends ServiceProvider
     function registerCommands() {
         $this->commands([
             ServiceDestroyCommand::class,
-            ServiceMakeCommand::class
+            ServiceMakeCommand::class,
+            CrudControllerCommand::class
         ]);
     }
 }
