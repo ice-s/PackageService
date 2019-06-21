@@ -13,12 +13,12 @@ class {{Name}}Repository extends BaseRepository implements {{Name}}RepositoryInt
     protected $model;
 
     /**
-     * {{Name}}Repository constructor.
+     * Specify Model class name
      *
-     * @param {{Name}}Model ${{NameFirstLowerCase}}Model
+     * @return string
      */
-    public function __construct({{Name}}Model ${{NameFirstLowerCase}}Model)
+    public function model()
     {
-        parent::__construct(${{NameFirstLowerCase}}Model);
+        return {{Name}}Model::class;
     }
 }

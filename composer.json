@@ -2,7 +2,7 @@
   "name": "ice-s/service-tool",
   "description": "Make service with command",
   "type": "php",
-  "version" : "1.0.4",
+  "version" : "1.0.5",
   "authors": [
     {
       "name": "ice-s",
@@ -11,7 +11,8 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "php": ">=7.0.0"
+    "php": ">=7.0.0",
+    "prettus/l5-repository": "^2.6"
   },
   "autoload": {
     "psr-4": {

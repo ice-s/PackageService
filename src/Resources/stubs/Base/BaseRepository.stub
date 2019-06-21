@@ -2,7 +2,7 @@
 
 namespace App\Entities{{PackageName}}\Repositories;
 
-use App\Entities{{PackageName}}\Models\BaseModel;
+use Prettus\Repository\Eloquent\BaseRepository as BRepository;
 
 /**
  * Class BaseRepository
@@ -11,14 +11,5 @@ use App\Entities{{PackageName}}\Models\BaseModel;
  */
 abstract class BaseRepository
 {
-    /**
-     * @var BaseModel $model
-     */
-    protected $model;
-
-    public function __construct(BaseModel $model)
-    {
-        $this->model = $model;
-    }
 
 }

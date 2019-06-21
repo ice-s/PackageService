@@ -10,12 +10,4 @@ abstract class BaseService
      */
     protected $repository;
 
-    /**
-     * @param BaseRepository $baseRepository
-     */
-    public function __construct(BaseRepository $baseRepository)
-    {
-        $this->repository = $baseRepository;
-    }
-
 }

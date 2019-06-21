@@ -11,13 +11,4 @@ class {{Name}}Service extends BaseService
      */
     protected $repository;
 
-    /**
-     * {{Name}}Service constructor.
-     *
-     * @param {{Name}}Repository ${{NameFirstLowerCase}}Repository
-     */
-    public function __construct({{Name}}Repository ${{NameFirstLowerCase}}Repository)
-    {
-        parent::__construct(${{NameFirstLowerCase}}Repository);
-    }
 }
